@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "587276568988",
+    "project_id": "check-yourself-963cc",
+    "storage_bucket": "check-yourself-963cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587276568988:android:45bbb98b5cfbd425d2e059",
+        "android_client_info": {
+          "package_name": "com.example.check_yourself"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587276568988-lncj3hsa8prue37bshatv9nslg94q3un.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.check_yourself",
+            "certificate_hash": "4075299de04de63d88fcf61482cac30c057af952"
+          }
+        },
+        {
+          "client_id": "587276568988-00v0fi503g50rkl51cuarot26e3o7he1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKPZxZTIsMf_p6ISgA_KPlC-xqVPbgde0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587276568988-00v0fi503g50rkl51cuarot26e3o7he1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
