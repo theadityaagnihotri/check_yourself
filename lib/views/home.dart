@@ -75,32 +75,49 @@ class _MyHomePageState extends State<MyHomePage> {
   void _showSignOutConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
+      barrierDismissible: false, // Prevent dismissing the dialog
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Sign Out'),
-          content: Text('Are you sure you want to sign out?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                _signOutUser(context);
-              },
-              child: Text('Sign Out'),
-            ),
-          ],
+        bool _loading = false; // Indicator for loading state
+
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: Text('Sign Out'),
+              content: _loading
+                  ? CircularProgressIndicator() // Show CircularProgressIndicator while loading
+                  : Text('Are you sure you want to sign out?'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: _loading // Disable button when loading
+                      ? null
+                      : () async {
+                          setState(() {
+                            _loading = true; // Set loading state to true
+                          });
+                          await _signOutUser(context);
+                          setState(() {
+                            _loading =
+                                false; // Set loading state to false after sign out
+                          });
+                        },
+                  child: Text('Sign Out'),
+                ),
+              ],
+            );
+          },
         );
       },
     );
   }
 
-  void _signOutUser(BuildContext context) async {
+  Future<void> _signOutUser(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pop();
     Navigator.of(context).pop();
   }
 
